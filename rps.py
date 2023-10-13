@@ -36,23 +36,7 @@ class Rules:
         return rules
 
 
-class Rules:
-    @staticmethod
-    def generate_rules(moves):
-        rules = {}
-        half_len = len(moves) // 2
-
-        for i, move1 in enumerate(moves):
-            for j in range(i + 1, i + half_len + 1):
-                move2 = moves[j % len(moves)]
-                rules[(move1, move2)] = "Win"
-                rules[(move2, move1)] = "Lose"
-
-        for move in moves:
-            rules[(move, move)] = "Draw"
-
-        return rules
-
+class Table:
     @staticmethod
     def display_rules(moves):
         # Exclude "--help" from the list of moves
