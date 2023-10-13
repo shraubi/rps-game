@@ -138,23 +138,13 @@ def main():
     moves = sys.argv[1:]
 
     if "--help" in sys.argv:
-        if len(moves) < 3 or len(set(moves)) != len(moves):
-            print("Invalid number of arguments. Provide at least 3 unique moves.")
-            sys.exit(1)
-        Rules.display_rules(moves)
-        sys.exit(0)
-
-    if len(moves) < 3 or len(set(moves)) != len(moves):
-        print("Invalid number of arguments. Provide at least 3 unique moves.")
+        Table.display_rules(moves)
+    elif len(moves) < 3 or len(set(moves)) != len(moves) or len(moves) % 2 == 0:
+        print("Invalid number of arguments. Provide an odd number of unique moves (at least 3).")
         sys.exit(1)
-
-    game = RPSGame(moves)
-
-    if len(sys.argv) < 4:
-        print("Invalid number of arguments. Provide at least 3 unique moves.")
-        sys.exit(1)
-
-    game.play_game()
+    else:
+        game = RPSGame(moves)
+        game.play_game()
 
 
 if __name__ == "__main__":
